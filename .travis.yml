@@ -8,3 +8,13 @@ before_install:
 
 script:
   - docker run -e CI=true jpmora/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-753645421930"
+  bucket_path: "docker"
+  on:
+    branch: master
